@@ -17,8 +17,6 @@
         border-radius: 10px;
         width: 210px;
         height: 300px;
-        /* Internal Image, upload your couple image here */
-        background-image: url(IMG-20230319-WA0000.jpg); /* Use relative path */
         background-size: cover;
         background-position: center up;
         background-size: 97%;
@@ -29,14 +27,33 @@
         transform: preserve-3d;
         -webkit-perspective: 2000px;
         perspective: 2000px;
-    }
-    
+      }
+
+      /* Define background images for different states */
+      .book.background-1 {
+        background-image: url(IMG-20230319-WA0000.jpg);
+      }
+
+      .book.background-2 {
+        background-image: url(IMG-20240314-WA0002.jpg);
+      }
+
+    /*  .book.background-3 {
+        background-image: url();
+        background-size: cover;
+        background-position: center;
+      }
+
+      .book.background-4 {
+        background-image: url();
+        background-size: cover;
+        background-position: center;
+      }*/
       
       .cover {
         top: 0;
         position: absolute;
         background-color: lightgray;
-
         background-image: linear-gradient(40deg, rgb(218, 1, 203), black);
         background-size: cover;
         background-position: center;
@@ -168,7 +185,7 @@
 </head>
 <body>
   <div id="container">
-    <div class="book">
+    <div class="book background-1" id="book">
       <div class="cover">
         <div class="notes">Happy</div>
         <div class="heart"></div>
@@ -177,5 +194,15 @@
       </div>
     </div>
   </div>
+  <script>
+    const book = document.getElementById('book');
+    let currentBackground = 1;
+
+    book.addEventListener('click', function() {
+        /* currentBackground = currentBackground % 4 + 1;*/
+      currentBackground = currentBackground % 2 + 1;
+      this.className = `book background-${currentBackground}`;
+    });
+  </script>
 </body>
 </html>
